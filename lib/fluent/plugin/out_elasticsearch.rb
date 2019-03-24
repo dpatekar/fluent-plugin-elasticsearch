@@ -599,16 +599,18 @@ EOC
         if record.has_key?(TIMESTAMP_FIELD)
           rts = record[TIMESTAMP_FIELD]
           dt = parse_time(rts, time, tag)
+          record["tt"] = "fffffffffff3"
         elsif record.has_key?(@time_key)
           rts = record[@time_key]
           dt = parse_time(rts, time, tag)
           if !@time_key_exclude_timestamp
             record[TIMESTAMP_FIELD] = dt.iso8601(@time_precision)
           end
+          record["tt"] = "fffffffffff2"
         else
           dt = Time.at(time).to_datetime
           record[TIMESTAMP_FIELD] = dt.iso8601(@time_precision)
-          record["tttttttttt"] = "fffffffffff"
+          record["tt"] = "fffffffffff3"
         end
       end
 
