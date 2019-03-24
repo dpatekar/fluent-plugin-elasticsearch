@@ -607,7 +607,9 @@ EOC
           end
         else
           dt = Time.at(time).to_datetime
-          record[TIMESTAMP_FIELD] = dt.iso8601(@time_precision)
+          if !@time_key_exclude_timestamp
+            record[TIMESTAMP_FIELD] = dt.iso8601(@time_precision)
+          end
         end
       end
 
