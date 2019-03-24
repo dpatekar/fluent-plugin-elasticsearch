@@ -604,6 +604,7 @@ EOC
           dt = parse_time(rts, time, tag)
           if !@time_key_exclude_timestamp
             record[TIMESTAMP_FIELD] = dt.iso8601(@time_precision)
+          end
         else
           dt = Time.at(time).to_datetime
           record[TIMESTAMP_FIELD] = dt.iso8601(@time_precision)
